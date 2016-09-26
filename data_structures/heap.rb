@@ -1,5 +1,5 @@
-# A priority queue
-# A priority queue is in a valid state after a method exits if:
+# Can be used as a priority queue
+# A heap is in a valid state after a method exits if:
 #  - The heap and all subheaps respect the parent-child ordering (i.e., the
 #    root is the minimum element -- or maximum if `min_top` is false)
 class Heap
