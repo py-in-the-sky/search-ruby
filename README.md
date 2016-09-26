@@ -1,10 +1,8 @@
 This is a solution to the problem described in the first paragraph of [this Quora discussion](http://www.quora.com/What-is-the-importance-of-this-algorithm).  I recommend viewing it in Firefox; for some reason, viewing the discussion in Firefox hides all mention of a solution under a "read more" link; I just found that this is not the case in some other browsers, at least on my computer.
 
-The design in `graph_searcher.rb` is largely borrowed from Peter Norvig's excellent [Design of Computer Programs](https://www.udacity.com/course/design-of-computer-programs--cs212) course.
+The design in `graph_searcher/` is largely borrowed from Peter Norvig's excellent [Design of Computer Programs](https://www.udacity.com/course/design-of-computer-programs--cs212) course.
 
-I have implemented a [Python version](https://github.com/py-in-the-sky/challenges/tree/master/intermediate_words_search_python) that runs roughly five times faster on most of the example cases used for benchmarking, which suggests there are some subtleties to Ruby performance that I don't understand.  Admittedly, I have a better grasp on Python than on Ruby.
-
-The tests under `spec.rb` (run `bundle exec rspec spec.rb`) are somewhat interesting.  The benchmarking under `benchmarking.rb` (run `bundle exec ruby benchmarking.rb`) is far more interesting, showing how A* far outperforms BFS on this problem.
+The tests under `main/spec.rb` (run `bundle exec rspec main/spec.rb`) are somewhat interesting.  The benchmarking under `main/benchmarking.rb` (run `bundle exec ruby main/benchmarking.rb`) is far more interesting, showing how A* far outperforms BFS on this problem.
 
 ####The Solution
 
