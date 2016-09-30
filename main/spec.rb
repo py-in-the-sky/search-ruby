@@ -40,17 +40,20 @@ TEST_CASES = [
 ]
 
 
-solver = Solver.new
-# solver = Solver.new(search_method: 'A*')
+solver = Solver.new(search_method: 'A*')
 
 
-RSpec.describe 'solver' do
+RSpec.describe 'Solver' do
   TEST_CASES.each do |start_word, target_word, minimal_path_length|
-    it 'finds the shortest path from start to target word' do
-      path = solver.solve(start_word, target_word)
-      # puts (path ? "#{path.join('--> ')}" : 'None')
-      path_length = path.nil? ? nil : path.length
-      expect(path_length).to eq(minimal_path_length)
-    end
+    # [Solver.new, Solver.new(search_method: 'A*')].each do |solver|
+
+      it 'finds the shortest path from start to target word' do
+        path = solver.solve(start_word, target_word)
+        # puts (path ? "#{path.join('--> ')}" : 'None')
+        path_length = path.nil? ? nil : path.length
+        expect(path_length).to eq(minimal_path_length)
+      end
+
+    # end
   end
 end

@@ -13,20 +13,11 @@ module GraphSearcher
     end
 
     def make_start_state(start_node)
-      SearchState.new([ start_node ])
+      SearchState.new(path: [ start_node ])
     end
 
     def make_next_state(state, next_node, _)
-      SearchState.new(state.path + [ next_node ])
-    end
-
-    class SearchState
-      attr_reader :path, :current_node
-
-      def initialize(path)
-        @path = path
-        @current_node = path.last
-      end
+      SearchState.new(path: state.path + [ next_node ])
     end
   end
 end

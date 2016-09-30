@@ -13,27 +13,33 @@ module GraphSearcher
     end
 
     def make_start_state(start_node)
-      SearchState.new([ start_node ], 0)
+      PrioritizedSearchState.new(path: [ start_node ])
     end
 
     def make_next_state(state, next_node, target_node)
       new_path = state.path + [ next_node ]
-      a_star_estimate = search_helper.underestimate_distance(next_node, target_node)
-      SearchState.new(new_path, new_path.length + a_star_estimate)
+
+      PrioritizedSearchState.new(
+        path: new_path,
+        priority: new_path.length + search_helper.underestimate_distance(next_node, target_node)
+        # A* heuristic -- the priority we give to a search state.
+        # Edit distance from current word to target word will never overestimate
+        # the actual distance from the current word to target word.  The idea is
+        # that it'll provide a tight underestimate of the distance.
+      )
+    end
+  end
+
+  class PrioritizedSearchState < SearchState
+    attr_reader :priority
+
+    def initialize(path:, priority: 0)
+      super(path: path)
+      @priority = priority
     end
 
-    class SearchState
-      attr_reader :path, :current_node, :priority
-
-      def initialize(path, priority)
-        @path = path
-        @current_node = path.last
-        @priority = priority
-      end
-
-      def <=> (other)
-        priority <=> other.priority
-      end
+    def <=> (other)
+      priority <=> other.priority
     end
   end
 end
